@@ -5,7 +5,7 @@ import StudentList from "./components/StudentList";
 function App() {
   return (
     <div>
-      <Header />
+      <Header title="Student List" major="Comcience"/>
       <StudentList />
     </div>
   );
