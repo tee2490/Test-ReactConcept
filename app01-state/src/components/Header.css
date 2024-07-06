@@ -1,0 +1,11 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: chocolate;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo {
+    width: 50px;
+}
