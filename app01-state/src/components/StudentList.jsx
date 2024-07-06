@@ -1,26 +1,10 @@
 import React, { useState } from "react";
 import "./StudentList.css";
 
-function StudentList() {
-  let students = [];
+function StudentList({data,deleteData}) {
+   const [show, setShow] = useState(true);
 
-  for (let index = 0; index < 5; index++) {
-    let student = {
-      id: index,
-      name: "Coffee" + index,
-    };
-
-    students.push(student);
-  }
-
-  const [data, setData] = useState(students);
-  const [show, setShow] = useState(true);
-
-  const deleteData = (id) => {
-    setData(data.filter((item) => item.id != id));
-  };
-
-  const table = () => (
+   const table = () => (
     <table className="table table-hover">
       <thead>
         <tr>
