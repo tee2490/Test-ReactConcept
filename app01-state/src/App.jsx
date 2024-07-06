@@ -1,22 +1,25 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 
 function App() {
-  const [number, setNumber] = useState(1)
+  const [number, setNumber] = useState(1);
 
   const Add = () => {
-    setNumber(number+1)
-  }
+    setNumber(number + 1);
+  };
 
-  const Minus = ()=>setNumber(number-1)
+  const Minus = () => setNumber(number - 1);
 
-  const Reset = ()=>setNumber(0)
+  const Reset = () => setNumber(0);
 
   return (
     <div>
-      <p>{number}</p>
-      <button onClick={Add}>Add</button>
-      <button onClick={Reset}>Reset</button>
-      <button onClick={Minus}>Minus</button>
+      <div class="d-flex justify-content-center">{number}</div>
+
+      <div className="d-flex justify-content-around">
+        <button className="btn btn-primary" onClick={Add}>Add</button>
+        <button className="btn btn-primary" onClick={Reset}>Reset</button>
+        <button className="btn btn-primary" onClick={Minus}>Minus</button>
+      </div>
     </div>
   );
 }
