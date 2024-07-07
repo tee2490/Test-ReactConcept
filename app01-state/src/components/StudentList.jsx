@@ -10,6 +10,7 @@ function StudentList({data,deleteData}) {
         <tr>
           <th scope="col">Id</th>
           <th scope="col">Name</th>
+          <th scope="col">Gender</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -18,6 +19,7 @@ function StudentList({data,deleteData}) {
           <tr key={item.id}>
             <th scope="row">{item.id}</th>
             <td>{item.name}</td>
+            <td>{item.gender}</td>
             <td>
               <button
                 onClick={() => deleteData(item.id)}
