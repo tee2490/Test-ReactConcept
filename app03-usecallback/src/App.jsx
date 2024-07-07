@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useCallback } from "react";
 import "./App.css";
 
 const Child = ({ returnComment }) => {
@@ -13,9 +13,10 @@ const App = () => {
   const [toggle, setToggle] = useState(false);
   const [data, setData] = useState("1.App - ");
 
-  const returnComment = (name) => {
-    return data + name;
-  };
+  const returnComment = useCallback(
+    (name) => {
+      return data + name;
+    }, [data]);
 
   return (
     <div className="App">
