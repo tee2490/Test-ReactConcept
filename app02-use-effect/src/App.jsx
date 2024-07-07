@@ -30,7 +30,8 @@ function App() {
 
   const reset = () => {
     setCount(0);
-    setText("");
+    setText("")
+    ;
   };
 
   return (
