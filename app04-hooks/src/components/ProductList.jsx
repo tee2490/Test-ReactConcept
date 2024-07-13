@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./ProductList.css";
 
 function ProductList() {
@@ -6,7 +6,7 @@ function ProductList() {
   const [Count, setCount] = useState(0);
   const [Url, setUrl] = useState("http://localhost:3000/products/");
 
-const fetchUrl =()=>{
+  const fetchUrl = useCallback(() => {
     fetch(Url)
       .then((response) => response.json())
       .then((data) => {
@@ -14,11 +14,11 @@ const fetchUrl =()=>{
         setCount(data.length);
       })
       .catch((e) => console.log("Failed"));
-}
+  }, [Url]);
 
   useEffect(() => {
-    fetchUrl()
-    console.log(55555555555)
+    fetchUrl();
+    console.log(55555555555);
   }, [fetchUrl]);
 
   return (
@@ -28,7 +28,11 @@ const fetchUrl =()=>{
         <button onClick={() => setUrl("http://localhost:3000/products/")}>
           Load All
         </button>
-        <button onClick={()=>setUrl("http://localhost:3000/products?in_stock=true")}>Load In Stock</button>
+        <button
+          onClick={() => setUrl("http://localhost:3000/products?in_stock=true")}
+        >
+          Load In Stock
+        </button>
       </div>
 
       {Products &&
@@ -44,7 +48,7 @@ const fetchUrl =()=>{
               <div className="product-row">
                 <div className="product-price">{item.price}</div>
                 <div className="product-stock">
-                  {item.in_stock=="true" ? "In Stock" : "Unavailable"}
+                  {item.in_stock == "true" ? "In Stock" : "Unavailable"}
                 </div>
               </div>
             </div>
