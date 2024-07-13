@@ -1,30 +1,15 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import "./ProductList.css";
+import { useFetch } from "../hooks/useFetch";
 
 function ProductList() {
-  const [Products, setProducts] = useState();
-  const [Count, setCount] = useState(0);
   const [Url, setUrl] = useState("http://localhost:3000/products/");
-
-  const fetchUrl = useCallback(() => {
-    fetch(Url)
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data);
-        setCount(data.length);
-      })
-      .catch((e) => console.log("Failed"));
-  }, [Url]);
-
-  useEffect(() => {
-    fetchUrl();
-    console.log(55555555555);
-  }, [fetchUrl]);
+  const {data : Products} = useFetch(Url)
 
   return (
     <div>
       <div className="product-row">
-        <h2>{Count}</h2>
+        <h2>{Products && Products.length}</h2>
         <button onClick={() => setUrl("http://localhost:3000/products/")}>
           Load All
         </button>
