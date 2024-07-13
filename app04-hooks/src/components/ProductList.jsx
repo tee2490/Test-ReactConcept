@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductList.css";
 import { useFetch } from "../hooks/useFetch";
+import BounceLoader  from "react-spinners/BounceLoader";
 
 function ProductList() {
   const [Url, setUrl] = useState("http://localhost:3000/products/");
-  const {data : Products} = useFetch(Url)
+  const { data: Products,Loading } = useFetch(Url);
+
+  if (Loading) return  <BounceLoader color="green"/> 
 
   return (
     <div>
