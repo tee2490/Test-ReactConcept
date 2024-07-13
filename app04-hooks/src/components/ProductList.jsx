@@ -6,7 +6,7 @@ function ProductList() {
   const [Count, setCount] = useState(0);
   const [Url, setUrl] = useState("http://localhost:3000/products/");
 
-  useEffect(() => {
+const fetchUrl =()=>{
     fetch(Url)
       .then((response) => response.json())
       .then((data) => {
@@ -14,7 +14,12 @@ function ProductList() {
         setCount(data.length);
       })
       .catch((e) => console.log("Failed"));
-  }, [Url]);
+}
+
+  useEffect(() => {
+    fetchUrl()
+    console.log(55555555555)
+  }, [fetchUrl]);
 
   return (
     <div>
