@@ -5,16 +5,20 @@ import {
   Contact,
   ProductDetail,
   ProductList,
+  Header
 } from "./components/";
 
 function App() {
   return (
-    <Routes>
+   <div>
+    <Header/>
+     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="products" element={<ProductList />} />
       <Route path="products/999" element={<ProductDetail />} />
       <Route path="contact" element={<Contact />} />
     </Routes>
+   </div>
   );
 }
 
