@@ -22,6 +22,10 @@ export const CartProvider = ({ children }) => {
       return money.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   }
 
+  function removeItem(id) {
+    dispatch({ type: "REMOVE", payload: id });
+  }
+
   useEffect(()=>{
     console.log("คำนวณหาผลรวม")
     dispatch({type:"CALCULATE_TOTAL"})
@@ -30,7 +34,7 @@ export const CartProvider = ({ children }) => {
 
     //กระจายข้อมูลที่จะนำไปใช้งานหรือแชร์ด้วย Context Provider ผ่านคุณสมบัติ value
     return (
-      <CartContext.Provider value={{ ...state,formatMoney}}>
+      <CartContext.Provider value={{ ...state,formatMoney,removeItem }}>
         {children} {/* คอมโพเนนต์ที่จะทำ value ไปใช้งาน */}
       </CartContext.Provider>
     );
